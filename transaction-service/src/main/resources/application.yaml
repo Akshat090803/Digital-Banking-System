@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: transaction-service
+
+server:
+  port: 8082
+
+#  For account service client feign client url (account.service.url)
+account:
+  service:
+    url: http://localhost:8081
+
+#Production Tip (Using Environment Variables)
+#account:
+#  service:
+#    url: ${ACCOUNT_SERVICE_URL:http://localhost:8081}
+#  (If ACCOUNT_SERVICE_URL is set in your system environment,
+#  Spring will use that; otherwise, it defaults to http://localhost:8081).
