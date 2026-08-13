@@ -2,22 +2,10 @@ spring:
   application:
     name: transaction-service
 
-server:
-  port: 8082
-
-#  For account service client feign client url (account.service.url)
-account:
-  service:
-    url: http://localhost:8081
-
-#Production Tip (Using Environment Variables)
-#account:
-#  service:
-#    url: ${ACCOUNT_SERVICE_URL:http://localhost:8081}
-#  (If ACCOUNT_SERVICE_URL is set in your system environment,
-#  Spring will use that; otherwise, it defaults to http://localhost:8081).
-
-
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
   datasource:
     url: jdbc:mysql://localhost:3306/transaction_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
@@ -59,3 +47,19 @@ management:
   endpoint:
     health:
       show-details: always
+
+
+server:
+  port: 8082
+
+#  For account service client feign client url (account.service.url)
+account:
+  service:
+    url: http://localhost:8081
+
+#Production Tip (Using Environment Variables)
+#account:
+#  service:
+#    url: ${ACCOUNT_SERVICE_URL:http://localhost:8081}
+#  (If ACCOUNT_SERVICE_URL is set in your system environment,
+#  Spring will use that; otherwise, it defaults to http://localhost:8081).

@@ -80,9 +80,9 @@ public class TransactionController {
     ){
         log.info("Otp verification request - transaction: {}",transactionId);
         TransactionResponseDto verified = transactionService.verifyOtp(transactionId,otp);
-
+         String message = verified.getFailureReason() == null ? "Otp verified successfully." : verified.getFailureReason();
         ApiResponse<TransactionResponseDto> response = new ApiResponse<>(
-                "Otp verified successfully.",
+                message,
                 HttpStatus.OK.value(),
                 verified
         );
